@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,29 +9,62 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" tabindex="1">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page">
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div>
+          <h1 id="name"></h1>
+          <p id="localisation"></p>
+          <p id="tagline"></p>
+        </div>
+        <button class="contact_button" onclick="toggleDialog('contact_modal')" tabindex="2">Contactez-moi</button>
+        <img id="portrait" src="" alt="">
       </div>
+      <div id="sort">
+        <p>Trier par</p>
+        <div role="listbox" id="sorting" data-show-options="false">
+          <p role="option" class="option" id="selected" data-option="likes" tabindex="3">Popularité</p>
+          <p role="option" class="option" data-option="date" tabindex="4">Date</p>
+          <p role="option" class="option" data-option="title" tabindex="5">Titre</p>
+        </div>
+      </div>
+      <section id="gallery"></section>
+      <aside>
+        <div id="total-likes" class="heart" data-before=""></div>
+        <p id="price"></p>
+      </aside>
     </main>
-    <div id="contact_modal">
+    <dialog id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <button class="hidden-button" onclick="toggleDialog('contact_modal')"><img src="assets/icons/close.svg" alt="close"/></button>
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="message_firstname">Prénom</label>
+						<input id="message_firstname" type="text">
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div>
+						<label for="message_lastname">Nom</label>
+						<input id="message_lastname" type="text">
+					</div>
+          <div>
+						<label for="message_email">Adresse éléctronique</label>
+						<input id="message_email" type="email">
+					</div>
+          <div>
+						<label for="message_content">Message</label>
+						<textarea id="message_content"></textarea>
+					</div>
+          <button class="contact_button" onclick="submitModal()">Envoyer</button>
 				</form>
 			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+		</dialog>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>
