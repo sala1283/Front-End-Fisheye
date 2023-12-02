@@ -1,13 +1,30 @@
-#contact_modal {
+.display-none {
     display: none;
 }
-
+.photograph-header, #sort, #gallery {
+    margin: 0 2.5vw;
+    display: flex;
+}
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    padding: 0 30px;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
 }
-
+.photograph-header div * {
+    margin-right: unset;
+}
+.photograph-header #name {
+    color: var(--secondary)
+}
+.photograph-header #localisation {
+    color: var(--primary)
+}
+.photograph-header #tagline {
+    color: grey;
+}
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -20,7 +37,12 @@
     border-radius: 5px;
     cursor: pointer;
 }
-
+.photograph-header img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -30,7 +52,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    position: fixed;
+    top: 5vh;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .modal header {
@@ -68,9 +93,163 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, form textarea {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 16pt;
+}
+#sort {
+    margin-top: 2vh;
+    gap: 2vh;
+    margin-bottom: 4vh;
+}
+#sort > p {
+    font-weight: bold;
+    font-size: 16pt;
+}
+#sorting {
+    background-color: #901C1C;
+    position: absolute;
+    left: 8vw;
+    color: white;
+    padding: 5px 50px 5px 16px;
+    font-size: 16pt;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+#sorting::after {
+    content: "^";
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    font-size: 20pt;
+}
+#sorting[data-show-options="false"]::after {
+    transform: scaleY(-1)
+}
+#sorting[data-show-options="false"] p {
+    display: none;
+}
+#sorting #selected {
+    display: block;
+}
+#gallery {
+    gap: 2vw;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 4vw;
+}
+
+#gallery .thumbnail {
+    width: 28vw;
+    height: 28vw;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#gallery .like-button {
+    background-color: transparent;
+    border: none;
+}
+#gallery article > div {
+    width: 28vw;
+    display: flex;
+    justify-content: space-between;
+}
+#gallery .title {
+    font-size: 24pt;
+}
+#gallery .title, #gallery .like-button::before, #gallery .like-button::after {
+    color: var(--primary)
+}
+
+.heart::before {
+    color: black;
+    content: attr(data-before);
+    font-size: 24pt;
+}
+.heart::after {
+    color: black;
+    content: " ♥";
+    font-size: 28pt;
+}
+aside {
+    background-color: #DB8876;
+    position: fixed;
+    bottom: 0;
+    right: 1vw;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 1vw;
+}
+
+aside #price {
+    font-size: 24pt;
+    margin: unset;
+}
+
+dialog:not([open]) {
+    display: none;
+}
+
+.lightbox {
+    display: flex;
+    justify-content: center;
+    width: 99vw;
+    height: 99vh;
+    border-color: white;
+}
+
+.lightbox button {
+    color: var(--primary);
+    border: none;
+    background: transparent;
+    font-size: 32pt;
+}
+.lightbox > button {
+    height: 59px;
+    margin-top: auto;
+    margin-bottom: auto;
+    transform: translateY(40px);
+}
+.dialog_media {
+    text-align: center;
+    width: 75vw;
+}
+
+.dialog_media img, .dialog_media video {
+    max-height: 75vh;
+    object-fit: contain;
+    box-shadow: lightgrey 5px 0;
+    border-radius: 10px;
+}
+
+.lightbox > .dialog_arrow {
+    margin-top: auto;
+    transform: translateY(72px);
+    margin-bottom: auto;
+}
+
+.dialog_arrow {
+    max-height: 48px;
+}
+
+.dialog_right .dialog_arrow {
+    transform: scaleX(-1);
+}
+
+.dialog_right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.hidden-button
+{
+    background-color: transparent;
+    border: none;
 }
