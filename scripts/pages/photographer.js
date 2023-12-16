@@ -160,12 +160,16 @@ function createArticle(photographer, media) {
             thumbnail.setAttribute("src", file_path)
         }
         else {
+            
             thumbnail = document.createElement("video")
             const file_path = "assets/photos/"+photographer.id+"/"+media.video
             const video_source = document.createElement("source")
             video_source.setAttribute("src", file_path)
             thumbnail.appendChild(video_source)
         }
+
+
+        
         thumbnail.setAttribute("tabindex", "0")
         thumbnail.setAttribute("alt", media.title + " closeup")
         thumbnail.classList.add("thumbnail")
@@ -223,23 +227,24 @@ function createLightbox(photographer, media, previousID) {
             }
         })
     //Media container
-        const media_container = document.createElement("div")
-        media_container.classList.add("dialog_media")
-        //Media
-            if (media.image) {
-                const image = document.createElement("img")
-                const file_path = "assets/photos/"+photographer.id+"/"+media.image
-                image.setAttribute("src", file_path)
-                media_container.appendChild(image)
-            }
-            else {
-                let video = document.createElement("video")
-                const file_path = "assets/photos/"+photographer.id+"/"+media.video
-                const video_source = document.createElement("source")
-                video_source.setAttribute("src", file_path)
-                video.appendChild(video_source)
-                media_container.appendChild(video)
-            }
+    const media_container = document.createElement("div")
+    media_container.classList.add("dialog_media")
+    //Media
+        if (media.image) {
+            const image = document.createElement("img")
+            const file_path = "assets/photos/"+photographer.id+"/"+media.image
+            image.setAttribute("src", file_path)
+            media_container.appendChild(image)
+        }
+        else {
+            let video = document.createElement("video")
+            video.setAttribute("controls","controls")
+            const file_path = "assets/photos/"+photographer.id+"/"+media.video
+            const video_source = document.createElement("source")
+            video_source.setAttribute("src", file_path)
+            video.appendChild(video_source)
+            media_container.appendChild(video)
+        }
         //Title
             const title = document.createElement("p")
             title.classList.add("title")
