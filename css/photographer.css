@@ -112,12 +112,13 @@ form input, form textarea {
 #sorting {
     background-color: #901C1C;
     position: absolute;
-    left: 8vw;
+    left: 11vw;
     color: white;
     padding: 5px 50px 5px 16px;
     font-size: 16pt;
     border-radius: 5px;
     box-shadow: 0px 4px 4px 0px #00000040;
+    z-index: 1;
 }
 #sorting::after {
     content: "^";
